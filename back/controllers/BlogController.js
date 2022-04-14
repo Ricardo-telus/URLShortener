@@ -4,7 +4,6 @@ export const postNewUrl = async (req, res) => {
     try {
         var newUrl=crypto.randomBytes(3).toString("hex");
         urls.push({shorter:newUrl, link:req.body.link})
-        console.log(urls)
         res.json( {message: "all correct", newLink:"http://localhost:8000/go/"+newUrl} )
     } catch (error) {
         res.status(400)
@@ -18,7 +17,7 @@ export const irToUrl = async (req, res) => {
             res.redirect(getUrl)
         } else {
             res.status(400)
-            res.json({message:"link no valid"} )
+            res.json({message:"This link is not valid"} )
         }
     } catch (error) {
         res.json( {message: error.message} )
